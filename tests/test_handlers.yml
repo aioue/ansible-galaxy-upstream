@@ -17,7 +17,7 @@
     galaxy_manage_systemd: false
     galaxy_systemd_root: false
     __galaxy_gravity_pm: supervisor
-    galaxy_user: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    galaxy_user: "{{ lookup('ansible.builtin.pipe', 'id -un') }}"
     __galaxy_user_name: "{{ galaxy_user }}"
   tasks:
     - name: Load the role's handlers and run only user-facts.yml
@@ -73,7 +73,7 @@
     galaxy_manage_systemd: false
     galaxy_systemd_root: false
     __galaxy_gravity_pm: supervisor
-    galaxy_user: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    galaxy_user: "{{ lookup('ansible.builtin.pipe', 'id -un') }}"
     __galaxy_user_name: "{{ galaxy_user }}"
   tasks:
     - name: Load the role's handlers and run only user-facts.yml
